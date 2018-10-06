@@ -3,10 +3,48 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-    <h1>Strona Testowa</h1>
+    <ul id="messages"></ul>
+<div id="wrapper">
+    <input id="m" autocomplete="off"> 
+    <div id="buttons"><button onclick="message()">Wyślij</button><button onclick="setName()">Ustaw imię</button></div>
+</div>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var messages = document.getElementById('messages');
+
+        var input = document.getElementById('m');
+        input.addEventListener('keydown', function(key){
+            if(key.keyCode == 13)
+            {
+                document.getElementsByTagName('button')[0].click();
+            }
+        });
+
+        function message()
+        {
+            if(document.getElementById('m').value == "")
+                return false;
+            socket.emit('message', document.getElementById('m').value);
+            document.getElementById('m').value = '';
+        }
+
+        function setName()
+        {
+            socket.emit('setName', document.getElementById('m').value);
+            document.getElementById('m').value = '';
+        }
+
+        socket.on('message server', (msgserv, user) =>{
+            messages.innerHTML = `<li><b>${user}:</b> ${msgserv}</li>` + messages.innerHTML;
+        });
+
+    </script>
 </body>
 </html>

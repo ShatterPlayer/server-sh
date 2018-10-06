@@ -1,139 +1,46 @@
-body
+#wrapper
 {
-	background-color: #404040;
-	font-family: 'Ubuntu', sans-serif;
+	width: 100%;
+	height: 80px;
+	margin: 0;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	text-align: right;
 }
 
-#container
+#wrapper input
 {
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#logo
-{
-	color: white;
-	font-size: 44px;
-	margin-top: 20px;
-	font-weight: 700;
-	letter-spacing: 3px;
-}
-
-#menu
-{
-	background-color: #303030;
-	padding: 10px;
-	margin-top: 20px;
-	color: #ffffff;
-}
-
-#topbar
-{
-	height: 170px;
-	background-color: #128870;
-	color: white;
-	margin-top: 20px;
-	padding: 10px;
-	margin-bottom: 25px;
-}
-
-#topbarL
-{
-	float: left;
-	width: 138px;
-	padding: 20px;
-	text-align: center;
-	border-right: 2px dotted #cccccc;
-}
-
-#topbarR
-{
-	float: left;
-	width:  760px;
-	padding: 20px;
-	font-size: 16px;
-	text-align: justify;
-}
-
-#sidebar
-{
-	float: left;
-	min-height: 620px;
-	width: 148px;
-	border-right: 2px dotted #666666;
-	background-color: lightgray;
+	position: absolute;
+	width: calc(80% - 20px);
+	background-color: darkgrey;
+	height: 56px;
+	left: 0;
 	font-size: 18px;
-	padding: 20px;
-	text-align: center;
 }
 
-#content
+#wrapper button
 {
-	float:left;
-	width: 730px;
-	padding: 40px;
-	background-color: #dedede;
-	min-height: 580px;
-	text-align: justify;
+	width: 100%;
+	background-color: aqua;
 }
 
-#footer
+#wrapper button, input
 {
-		clear: both;
-		color: white;
-		text-align: center;
-		padding: 10px;
-}
-
-.option
-{
-	float: left;
-	min-weight: 50px;
-	height: 25px;
+	border: 2px #121212 solid;
 	padding: 10px;
-	font-size: 18px;
-	border-right: 2px dotted #444444;
-	opacity: 0.8;
+	margin: 0;
 }
 
-.option:hover
+ul
 {
-	background-color: #000000;
-	cursor: pointer;
+	list-style-type: none;
+	padding: 0;
 }
 
-.optionL
+#buttons
 {
-	font-size: 18px;
-	height: 25px;
-	border-bottom: 2px dotted #444444;
-	padding: 10px;
+	position: absolute;
+	right: 0;
+	width: 20%;
 }
-
-.optionL:hover
-{
-	background-color: #f36742;
-	color: white;
-	cursor: pointer;
-}
-
-.dottedline
-{
-	border-bottom: 2px dotted #444444;
-	margin-top: 15px;
-	margin-bottom: 20px;
-	height: 5px;
-}
-
-.bigtitle
-{
-	font-size: 36px;
-	font-weight: 700;
-	letter-spacing:2px;
-}
-
-
-
-
-
