@@ -1,34 +1,47 @@
 const express = require('express');
-const path = require('path');
-const routes = require('./routing');
-
 const app = express();
+const path = require('path');
+
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
-
 app.set('port', process.env.PORT || 8080);
+app.use(express.static(path.join(__dirname, 'static')));
 
-http.listen(app.get('port'), (req, res) =>{
-    console.log(`Server listening on ${app.get('port')}`);
+app.get('/', (req, res) =>{
+    res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
-io.on('connect', (socket) =>{
-    console.log(socket.id + ' connected');
+var players = {};
 
-    socket.on('message', (msg) =>{
-        console.log(socket.id + ': '+ msg);
-        io.emit('message server', msg, socket.id);
-    });
+io.on('connection', (socket) =>{
+    players[socket.id] = {
+        x: 30,
+        y: 30
+    };
 
-    socket.on('setName', (name) =>{
-        socket.id = name;
+    socket.on('move', (move) =>{
+        var player = players[socket.id];
+        if(move.up && player.y>=15)
+            player.y -= 5;
+        if(move.down && player.y<=585)
+            player.y += 5;
+        if(move.left && player.x>=15)
+            player.x -= 5;
+        if(move.right && player.x<=785)
+            player.x += 5;
     });
 
     socket.on('disconnect', () =>{
-        console.log(socket.id + ' disconnected');
+        delete players[socket.id];
     });
+
+    setInterval(function(){
+        io.emit('server', players);
+    }, 1000/60);
+});
+
+
+http.listen(app.get('port'), () =>{
+    console.log(`Server listening on ${app.get('port')}`);
 });

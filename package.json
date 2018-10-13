@@ -4,13 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ShatterPlayer/server-sh.git"
   },
-  "author": "ShatterPlayer",
+  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ShatterPlayer/server-sh/issues"

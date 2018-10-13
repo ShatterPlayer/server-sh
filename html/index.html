@@ -1,50 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+
+    <meta charset="utf-8">
+    <title>GRA</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Chat</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css" type="text/css">
-</head>
-<body>
-    <ul id="messages"></ul>
-<div id="wrapper">
-    <input id="m" autocomplete="off"> 
-    <div id="buttons"><button onclick="message()">Wyślij</button><button onclick="setName()">Ustaw imię</button></div>
-</div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css" type="text/css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script src="socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-        var messages = document.getElementById('messages');
+    <script src="game.js"></script>
 
-        var input = document.getElementById('m');
-        input.addEventListener('keydown', function(key){
-            if(key.keyCode == 13)
-            {
-                document.getElementsByTagName('button')[0].click();
-            }
-        });
-
-        function message()
-        {
-            if(document.getElementById('m').value == "")
-                return false;
-            socket.emit('message', document.getElementById('m').value);
-            document.getElementById('m').value = '';
-        }
-
-        function setName()
-        {
-            socket.emit('setName', document.getElementById('m').value);
-            document.getElementById('m').value = '';
-        }
-
-        socket.on('message server', (msgserv, user) =>{
-            messages.innerHTML = `<li><b>${user}:</b> ${msgserv}</li>` + messages.innerHTML;
-        });
-
-    </script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
 </body>
 </html>
