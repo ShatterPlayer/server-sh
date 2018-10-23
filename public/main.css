@@ -1,21 +1,41 @@
+body
+{
+    background-color: lightgray;
+}
+
 input
 {
     box-sizing: content-box;
     padding: 5px 10px;
     text-align: center;
-    width: 500px;
+    margin-top: 4px;
+}
+
+input[type="submit"]
+{
+    background-color: green;
+    border: 1px solid darkgreen;
 }
 
 textarea
 {
     height: 300px;
-    width: 500px;
     padding: 5px 10px;
+    margin: 0;
+}
+
+input,
+textarea
+{
+    border: 1px solid blue;
+    width: 500px;
+    outline: none;
 }
 
 h2
 {
     text-align: center;
+    color: darkblue;
 }
 
 .container
