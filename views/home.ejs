@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>database-sh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body>
+    <div class="container">
+        <form action="/app" method="POST">
+            <textarea name="text" placeholder="Text Notatki"></textarea>
+            <input type="text" name="category" autocomplete="off" placeholder="Kategoria">
+            <input type="password" name="password" placeholder="Hasło">
+            <input type="submit" value="Zapisz">
+        </form>
+        <h2><%= response %></h2>
+    </div>
+</body>
+</html>
